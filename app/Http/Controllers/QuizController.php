@@ -10,4 +10,9 @@ class QuizController extends Controller
     {
         return view('quiz.show');
     }
+
+    public function create()
+    {
+        return view();
+    }
 }
