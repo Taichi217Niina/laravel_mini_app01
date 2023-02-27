@@ -18,5 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', [QuizController::class, 'show'])->name('show');
+//top画面表示
+Route::get('/', [QuizController::class, 'top'])->name('top');
+//quiz画面表示
+Route::get('/quiz', [QuizController::class, 'show'])->name('show');
 
+Route::get('/quiz/create', [QuizController::class, 'create'])->name('create');
+Route::post('/quiz', [QuizController::class, 'store'])->name('store');
+
+Route::delete('/quiz/{id}', [QuizController::class, 'delete'])->name('delete');
