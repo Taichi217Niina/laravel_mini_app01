@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use Request as QuizRequest;
 
 class QuizController extends Controller
 {
@@ -20,14 +21,18 @@ class QuizController extends Controller
         //ランダムでデータを取得
         $quiz = Quiz::inRandomOrder()->first();
 
-        if($quiz != 'TEST')
-        {
-            $answer = 'TEST';
-            $msg = 'Game Over...';
-            return view('quiz.show', compact('msg', 'quiz', 'answer'));
-        }
+        return view('quiz.show', compact('quiz'));
+    }
 
-        return view('quiz.show', compact('quiz',));
+    public function result()
+    {
+        if (QuizRequest::has('correctAnswer')) {
+            //正しい解答
+            $correctAnswer = QuizRequest::input('correctAnswer');
+            //入力した解答
+            $inputAnswer = QuizRequest::input('inputAnswer');
+        }
+        return view('quiz.result', compact('inputAnswer', 'correctAnswer'));
     }
 
     public function create()

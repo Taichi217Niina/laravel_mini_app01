@@ -23,6 +23,8 @@ Route::get('/', [QuizController::class, 'top'])->name('top');
 //quiz画面表示
 Route::get('/quiz', [QuizController::class, 'show'])->name('show');
 
+Route::get('/quiz/result', [QuizController::class, 'result'])->name('result');
+
 Route::get('/quiz/create', [QuizController::class, 'create'])->name('create');
 Route::post('/quiz', [QuizController::class, 'store'])->name('store');
 
