@@ -9,19 +9,12 @@
 </head>
 
 <body>
-        {{ $quiz->question }}
-        <form action="">
-            <input type="text" name="answer" placeholder="入力してください" />
-            <button>確定</button>
-        </form>
-
-        @if ($quiz == $answer)
-        {{ $msg }}
-        <a href="{{ '/' }}">TOPに戻る</a>
-         @endif
-
-
-
+    {{ $quiz->question }}
+    <form action="{{ '/quiz/result' }}" method=get>
+        <input type="hidden" name="correctAnswer" value="{{ $quiz->answer }}" />
+        <input type="text" name="inputAnswer" placeholder="入力してください" />
+        <button>確定</button>
+    </form>
 </body>
 
 </html>
