@@ -35,6 +35,22 @@ class QuizController extends Controller
         return view('quiz.result', compact('inputAnswer', 'correctAnswer'));
     }
 
+    public function edit(Request $request)
+    {
+        $quiz = Quiz::find($request['id']);
+        return view('quiz.edit', compact('quiz'));
+    }
+
+    public function update(Request $request)
+    {
+        $quiz = Quiz::find($request['id']);
+        $quiz->question = $request['question'];
+        $quiz->answer = $request['answer'];
+        $quiz->save();
+
+        return redirect()->route('top');
+    }
+
     public function create()
     {
         return view('quiz.create');

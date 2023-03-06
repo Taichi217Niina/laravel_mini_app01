@@ -28,4 +28,6 @@ Route::get('/quiz/result', [QuizController::class, 'result'])->name('result');
 Route::get('/quiz/create', [QuizController::class, 'create'])->name('create');
 Route::post('/quiz', [QuizController::class, 'store'])->name('store');
 
+Route::get('/quiz/edit/{id}', [QuizController::class, 'edit'])->name('edit');
+Route::post('/quiz/edit/{id}', [QuizController::class, 'update'])->name('update');
 Route::delete('/quiz/{id}', [QuizController::class, 'delete'])->name('delete');
