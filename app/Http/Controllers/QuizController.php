@@ -43,6 +43,12 @@ class QuizController extends Controller
 
     public function update(Request $request)
     {
+        //空白バリデーション
+        $validated = $request->validate([
+            'question' => 'required',
+            'answer' => 'required',
+        ]);
+
         $quiz = Quiz::find($request['id']);
         $quiz->question = $request['question'];
         $quiz->answer = $request['answer'];
@@ -58,6 +64,13 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
+
+        //空白バリデーション
+        $validated = $request->validate([
+            'question' => 'required',
+            'answer' => 'required',
+        ]);
+
         Quiz::create([
             'question' => $request['question'],
             'answer' => $request['answer']
