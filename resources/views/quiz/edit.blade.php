@@ -7,6 +7,15 @@
   <title>編集画面</title>
 </head>
 <body>
+  @if ($errors->any())
+  <div class="alert alert-danger">
+      <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+@endif
   <form action={{route('update', ['id'=>$quiz->id])}} method="post">
     @csrf
     <input type="text" name="question" value="{{$quiz->question}}">

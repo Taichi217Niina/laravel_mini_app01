@@ -8,6 +8,15 @@
 </head>
 <body>
   <h2>QUIZを作成しよう</h2>
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
   <form action="{{route('store')}}" method="post">
     @csrf
     <input type="text" name="question" placeholder="質問を入力" />
