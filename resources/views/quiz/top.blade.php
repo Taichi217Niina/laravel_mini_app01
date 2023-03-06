@@ -19,12 +19,13 @@
     </form>
     <P>クイズ一覧</P>
     @foreach ($quizAll as $quiz)
-        {{ $quiz->question }}<br />
+       {{ $quiz->question }}
         <form action="{{ route('delete', ['id' => $quiz->id]) }}" method="post">
             @method('delete')
             @csrf
             <button>削除する</button>
         </form>
+        <a href="{{ route('edit', ['id'=>$quiz->id])}}"><button>編集</button></a><br />
     @endforeach
 </body>
 
